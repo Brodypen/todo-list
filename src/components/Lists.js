@@ -8,7 +8,7 @@ const Lists = props => {
 }
 
 Lists.propTypes = {
-    
+    title: PropTypes.string.isRequired,
 }
 
 export default Lists
