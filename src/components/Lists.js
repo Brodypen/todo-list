@@ -1,14 +1,17 @@
 import React from 'react'
+import Todos from './Todos'
 import PropTypes from 'prop-types'
 
-const Lists = props => {
+const Lists = ({todos}) => {
   return (
-    <div>Lists</div>
+    todos.map(todo => {
+      return <Todos key={todo.id} todo={todo}></Todos>
+    })
   )
 }
 
 Lists.propTypes = {
-    title: PropTypes.string.isRequired,
+    todos: PropTypes.string.isRequired,
 }
 
 export default Lists
