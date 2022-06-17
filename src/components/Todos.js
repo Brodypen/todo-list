@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./componentsCSS/Todos.module.css";
-import styled from 'styled-components'
 /* Todos are the individals tasks you have to do*/
 
 
