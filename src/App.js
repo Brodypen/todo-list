@@ -18,7 +18,7 @@ function App() {
       const newTodo = {};
       newTodo["title"] = title;
       newTodo["description"] = description;
-      newTodo["complete"] = complete;
+      newTodo["complete"] = false;
       setTodos((oldTodos) => [...oldTodos, newTodo]);
   };
   return (
