@@ -1,4 +1,4 @@
-import React, {useState, useId} from "react";
+import React, { useState, useId } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -6,11 +6,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { FormControlLabel, FormGroup, Switch } from "@mui/material";
-const TodoForm = ({ onClick }) => {
+const TodoForm = ({ onClick, todos }) => {
   const [open, setOpen] = React.useState(false);
-  const [name, setName] = React.useState("");
+  const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [complete, setComplete] = React.useState(false);
+  const [errorText, setErrorText] = React.useState("");
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -18,7 +19,17 @@ const TodoForm = ({ onClick }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const id = useId();
+  const handleSubmit = () => {
+    if (title === "" || todos.findIndex((item) => item.title === title) !== -1) {
+      setErrorText("Error!");
+      
+    }
+    else {
+    setErrorText("");
+    handleClose();
+    onClick(title, desc, complete);
+  }
+  };
 
   return (
     <div>
@@ -29,10 +40,13 @@ const TodoForm = ({ onClick }) => {
         <DialogTitle>New Task</DialogTitle>
         <DialogContent>
           <TextField
-            id="name"
-            label="Name"
+         
+            error={errorText !== ""}
+            helperText={errorText === "" ? "" : "Task with same name"}
+            id="title"
+            label="Title"
             variant="filled"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <TextField
             id="Description"
@@ -45,12 +59,14 @@ const TodoForm = ({ onClick }) => {
               control={<Switch />}
               label="Complete?"
               color="secondary"
-              onChange={(e) => e.target.value === 'on' ? setComplete(true) : setComplete(false)}
+              onChange={(e) =>
+                e.target.value === "on" ? setComplete(true) : setComplete(false)
+              }
             ></FormControlLabel>
           </FormGroup>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => onClick(id, name, desc, complete)}>Submit</Button>
+          <Button onClick={() => handleSubmit()}>Submit</Button>
         </DialogActions>
       </Dialog>
     </div>
