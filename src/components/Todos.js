@@ -1,20 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Stack, Box, Typography } from "@mui/material";
+import { Stack, Paper, Typography } from "@mui/material";
+import Todo from "./Todo";
 /* Todos are the individals tasks you have to do*/
-
 
 const Todos = ({ todos }) => {
   return (
-    <Stack spacing={2}>
+    <Stack
+      bgcolor={""}
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      spacing={2}
+    >
       {console.table(todos)}
       {todos.map((todo) => (
-        <Typography key={'' + todo.title + todo.description + todo.complete}
-          bgcolor={'green'}
-          color={"text.primary"}
-        >
-          {todo.title}
-        </Typography>
+          <Paper>
+            <Todo
+              title={todo.title}
+              description={todo.description}
+              complete={todo.complete}
+              key={"" + todo.title}
+            />
+          </Paper>
       ))}
     </Stack>
   );
