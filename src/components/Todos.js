@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Stack, Paper, Typography } from "@mui/material";
+import { Stack, Paper } from "@mui/material";
 import Todo from "./Todo";
 /* Todos are the individals tasks you have to do*/
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import Header from "./components/Header";
-import { Paper, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import TodoForm from "./components/TodoForm";
 import Todos from "./components/Todos";
 function App() {
