@@ -1,9 +1,11 @@
 import React from "react";
-import { Stack, Paper } from "@mui/material";
-import Todo from "./Todo";
+import { Typography, Checkbox, Stack, IconButton, Paper } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 /* Todos are the individals tasks you have to do*/
 
-const Todos = ({ todos }) => {
+const Todos = ({ todos, deleteTodo }) => {
+
   return (
     <Stack
       bgcolor={""}
@@ -12,16 +14,24 @@ const Todos = ({ todos }) => {
       alignItems="center"
       spacing={2}
     >
-      {console.table(todos)}
       {todos.map((todo) => (
-          <Paper>
-            <Todo
-              title={todo.title}
-              description={todo.description}
-              complete={todo.complete}
-              key={"" + todo.title}
-            />
-          </Paper>
+        <Paper key={todo.title}>
+          <Stack
+            bgcolor={"grey"}
+            direction="row"
+            alignItems="center"
+            spacing={3}
+          >
+            <Checkbox />
+            <Typography variant="h4">{todo.title}</Typography>
+            <IconButton aria-label="Inspect">
+              <ManageSearchIcon />
+            </IconButton>
+            <IconButton aria-label="DeleteIcon" onClick={() => deleteTodo(todo.title)}>
+              <DeleteIcon />
+            </IconButton>
+          </Stack>
+        </Paper>
       ))}
     </Stack>
   );

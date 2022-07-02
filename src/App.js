@@ -12,22 +12,27 @@ function App() {
     },
   });
   const [todos, setTodos] = useState([
-    { title: "Todo", description: "Info", complete: false },
+    {  title: "Todo", description: "Info", complete: false },
   ]);
   const OnTodoSubmit = (title, description, complete) => {
-      const newTodo = {};
-      newTodo["title"] = title;
-      newTodo["description"] = description;
-      newTodo["complete"] = false;
-      setTodos((oldTodos) => [...oldTodos, newTodo]);
+    const newTodo = {};
+    newTodo["title"] = title;
+    newTodo["description"] = description;
+    newTodo["complete"] = false;
+    setTodos((oldTodos) => [...oldTodos, newTodo]);
   };
+  const deleteTodo = (title) => {
+    // console.log(title);
+    const newTodos = todos.filter(todo => todo.title !== title);
+    setTodos(newTodos);
+  }
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
         <Header />
         <TodoForm todos={todos} onClick={OnTodoSubmit} />
       </Box>
-      <Todos todos={todos} />
+      <Todos todos={todos} deleteTodo={deleteTodo} />
     </ThemeProvider>
   );
 }

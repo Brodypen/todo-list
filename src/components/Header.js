@@ -1,11 +1,11 @@
-import {  AppBar } from '@mui/material';
-import React from 'react'
-const Header = props => {
+import { Typography } from "@mui/material";
+import React from "react";
+const Header = (props) => {
   return (
-    <AppBar position="static">
-
-    </AppBar>
+    <div>
+      <Typography> Todo List!</Typography>
+    </div>
   );
-}
+};
 
-export default Header
+export default Header;
